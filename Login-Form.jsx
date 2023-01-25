@@ -18,13 +18,13 @@ const LoginForm = () => {
       setError(null);
       try {
         // Send login request to the backend
-        const response = await axios.post("/api/login", { email, password });
+        const res = await axios.post("/api/login", { email, password });
 
         // If the request is successful, update the UI and redirect the user to the home page.
-        if (response.status === 200) {
+        if (res.status === 200) {
           history.push("/home");
         }
-      } catch (error) {
+      } catch (err) {
         // If the request fails, update the UI to display an error message
         setError("Invalid email or password");
       }
@@ -55,7 +55,9 @@ const LoginForm = () => {
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
-        </Button>
+          </Button>
       </Form.Item>
     </Form>
-    );
+  );
+};
+export default LoginForm;
